@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href=""/>
+    <script src="../js/lib/angular.min.js"></script>
+    <script src="../js/lib/angular-route.min.js"></script>
+    <script src="app.js"></script>
+    <script src="controller.js"></script>
+</head>
+<body ng-app="phonecatApp">
+    <div ng-controller="PhoneListCtrl">
+        {{test.test1}}
+        {{constanttest}}
+        {{test2}}
+    </div>
+    <div>
+        <a href="#/phones">phones</a>
+        <a href="#/phones/:phoneId">phoneId</a>
+        <a href="#/login">login</a>
+    </div>
+
+    //该 div 内的 HTML 内容会根据路由的变化而变化。
+    <div ng-view=""></div>
+
+</body>
+</html>
