@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href=""/>
+    <script>
+        window.onload = function (){
+            function reverseStr(str){
+
+                var str = str || 'abc';
+                var len = str.length;
+
+                var result = document.getElementById('result');
+                result.innerHTML = '';
+
+                for( var i=len; i>=0; i--){
+                    result.innerHTML += str.charAt(i);
+                }
+
+            }
+            document.getElementById('btn').onclick = function(){
+                reverseStr();
+            };
+
+            function deWeight(arr){
+                var result = [], len;
+                len = arr.length;
+                result.push(arr[0]);
+                for (var i = 0; i<len; i++) {
+                    if (result.indexOf(arr[i])<0) {
+                        result.push(arr[i]);
+                    }
+                }
+                return result;
+            }
+            document.getElementById('btn2').onclick = function(){
+                var result = [];
+                result[0] = deWeight([1, 1, 2, 3, 4, 4]);
+                result[1] = deWeight(['a', 'b', '1', 1, 'a', 1, 4]);
+                document.getElementById('result2').innerHTML = result[0];
+                document.getElementById('result3').innerHTML = result[1];
+                console.log(result[0]);
+                console.log(result[1]);
+            };
+
+
+        }
+        /**
+         * 返回顶部
+         */
+        function myScroll(){
+            var docb = document.body,
+                docd = document.documentElement,
+                top = docb.scrollTop || docd.scrollTop,
+                step = 100;
+
+            var timer=setInterval(function(){
+                top -= 100;
+                if(top < step){
+                    top=0;
+                    window.scrollTo(0,0);
+                    clearInterval(timer);
+                }
+                window.scrollTo(top,top);
+            },100);
+        }
+    </script>
+</head>
+<body>
+<p>实现一个反转字符串的函数reverseStr('abc')<input id="btn" type="button" value="start"/></p>
+<div id="result"></div>
+
+<p>实现一个数组去重函数 <br/>
+    deWeight([1, 1, 2, 3, 4, 4])
+    //<div id="result2"></div>
+    <br/>
+    deWeight(['a', 'b', '1', 1, 'a', 1, 4])
+    //<div id="result3"></div>
+</p>
+<input id="btn2" type="button" value="start"/>
+<div style="width: 1000px; height: 2000px; background: #f60;"></div>
+<div style="width: 50px;height: 50px; background: #ff9955;" onclick="myScroll()"></div>
+</body>
+</html>
