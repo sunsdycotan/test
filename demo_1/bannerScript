@@ -1,0 +1,90 @@
+<script>
+var bannerScript = (function($, doc){
+    $(function(){
+        var objUl = $('.ws_images ul'),
+            timer = null,
+            wsContainer = $('.ws_images'),
+            wsContainerWidth = wsContainer.width();
+        
+        function play(){
+            objUl.animate({'margin-left': '-' + wsContainerWidth + 'px'},100,function(){
+                objUl.css({'margin-left':0}).children('li').last().after(objUl.children('li').first());
+            });
+
+            timer = setTimeout(function(){
+                play();
+            },2000);
+        }
+
+        play();
+        wsContainer.on('mouseover',function(){
+            clearTimeout(timer);
+        })
+        wsContainer.on('mouseout',function(){
+            timer = setTimeout(function(){
+                play();
+            },2000);
+        })
+    })
+
+})(jQuery, document);
+</script>
+
+<div id="wowslider-container1">
+    <div class="ws_images">
+        <ul>
+            <li><img src="images/1.jpg" alt="1" title="1" id="wows1_0"></li>
+            <li><img src="images/2.jpg" alt="2" title="2" id="wows1_1"></li>
+            <li><img src="images/3.jpg" alt="3" title="3" id="wows1_2"></li>
+            <li><img src="images/4.jpg" alt="4" title="4" id="wows1_3"></li>
+        </ul>
+    </div>
+</div>
+<style>
+        #wowslider-container1{ width:640px }
+        #wowslider-container1 .ws_images ul{
+            position:relative;
+            width: 10000%;
+            height:100%;
+            left:0;
+            list-style:none;
+            margin:0;
+            padding:0;
+            border-spacing:0;
+            overflow: visible;
+            /*table-layout:fixed;*/
+        }
+        #wowslider-container1 .ws_images ul li{
+            position: relative;
+            width:1%;
+            height:100%;
+            line-height:0; /*opera*/
+            overflow: hidden;
+            float:left;
+            /*font-size:0;*/
+            padding:0 0 0 0 !important;
+            margin:0 0 0 0 !important;
+        }
+
+        #wowslider-container1 .ws_images{
+            position: relative;
+            left:0;
+            top:0;
+            height:100%;
+            max-height:360px;
+            max-width: 640px;
+            vertical-align: top;
+            border:none;
+            overflow: hidden;
+        }
+        #wowslider-container1 .ws_images ul a{
+            width:100%;
+            height:100%;
+            max-height:360px;
+            display:block;
+            color:transparent;
+        }
+        #wowslider-container1 img{
+            max-width: none !important;
+        }
+    </style>
