@@ -1,4 +1,5 @@
 <script>
+//图片循环轮播
 var bannerScript = (function($, doc){
     $(function(){
         var objUl = $('.ws_images ul'),
